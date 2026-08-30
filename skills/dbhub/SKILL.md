@@ -1,0 +1,148 @@
+---
+name: dbhub
+description: 通过 DBHub MCP 服务器查询数据库的指南。每当需要探索数据库模式、检查表或运行 SQL 查询时，请使用此技能。通过 DBHub 的 MCP 工具（search_objects、execute_sql）激活任何数据库查询任务、模式探索、数据检索或 SQL 执行 — 即使用户只是说\"检查数据库\"或\"给我找一些数据\"。此技能确保您遵循正确的先探索后查询工作流程，而不是猜测表结构。
+---
+
+# DBHub 数据库查询指南
+
+通过 DBHub 的 MCP 服务器处理数据库时，始终遵循**先探索后查询**模式。在没有了解模式的情况下直接跳到 SQL 是最常见的错误 — 它会导致查询失败、浪费令牌和沮丧的用户。
+
+## 可用工具
+
+DBHub 提供两个 MCP 工具：
+
+| 工具 | 用途 |
+|------|---------|
+| `search_objects` | 探索数据库结构 — 模式、表、列、索引、存储过程、函数 |
+| `execute_sql` | 针对数据库运行 SQL 语句 |
+
+如果配置了多个数据库，DBHub 会为每个源注册单独的工具（例如，`search_objects_prod_pg`、`execute_sql_staging_mysql`）。通过调用相应命名的工具选择所需的数据库。
+
+## 先探索后查询工作流程
+
+每个数据库任务都应遵循此流程。关键洞察是每一步都会缩小您的关注范围，因此您永远不会浪费令牌加载不需要的信息。
+
+### 步骤 1：发现存在哪些模式
+
+```
+search_objects(object_type="schema", detail_level="names")
+```
+
+这告诉您整体情况。大多数数据库有一个主模式（例如，PostgreSQL 中的 `public`，SQL Server 中的 `dbo`）加上可以忽略的系统模式。
+
+### 步骤 2：查找相关表
+
+一旦知道模式，列出其表：
+
+```
+search_objects(object_type="table", schema="public", detail_level="names")
+```
+
+如果您正在寻找特定内容，请使用模式：
+
+```
+search_objects(object_type="table", schema="public", pattern="%user%", detail_level="names")
+```
+
+`pattern` 参数使用 SQL LIKE 语法：`%` 匹配任意字符，`_` 匹配单个字符。
+
+如果您需要更多上下文来识别正确的表（行数、列数、表注释），请改用 `detail_level="summary"`。
+
+### 步骤 3：检查表结构
+
+在编写任何查询之前，了解列：
+
+```
+search_objects(object_type="column", schema="public", table="users", detail_level="full")
+```
+
+这将返回列名、数据类型、可空性和默认值 — 编写正确 SQL 所需的一切。
+
+要了解查询性能或连接模式，还要检查索引：
+
+```
+search_objects(object_type="index", schema="public", table="users", detail_level="full")
+```
+
+### 步骤 4：编写并执行查询
+
+现在您知道了确切的表和列名，编写精确的 SQL：
+
+```
+execute_sql(sql="SELECT id, email, created_at FROM public.users WHERE created_at > '2024-01-01' ORDER BY created_at DESC")
+```
+
+## 渐进式披露：选择正确的详细级别
+
+`detail_level` 参数控制 `search_objects` 返回多少信息。从最小开始，仅在需要时深入 — 这保持响应快速且节省令牌。
+
+| 级别 | 您得到的内容 | 何时使用 |
+|-------|-------------|-------------|
+| `names` | 仅对象名 | 浏览、找到正确的表 |
+| `summary` | 名称 + 元数据（行数、列数、注释） | 在相似表之间选择、了解数据量 |
+| `full` | 完整结构（带类型的列、索引、存储过程定义） | 编写查询之前、了解关系 |
+
+**经验法则：** 对广泛探索使用 `names`，对缩小范围使用 `summary`，仅对要查询的特定表使用 `full`。
+
+## 使用多个数据库
+
+当 DBHub 配置了多个数据库源时，它会为每个源注册单独的工具实例。工具名称遵循模式 `{tool}_{source_id}`：
+
+```
+# 查询生产 PostgreSQL 数据库
+search_objects_prod_pg(object_type="table", schema="public", detail_level="names")
+execute_sql_prod_pg(sql="SELECT count(*) FROM orders")
+
+# 查询暂存 MySQL 数据库
+search_objects_staging_mysql(object_type="table", detail_level="names")
+execute_sql_staging_mysql(sql="SELECT count(*) FROM orders")
+```
+
+在单数据库设置中，工具只是 `search_objects` 和 `execute_sql`，没有任何后缀。当用户提到特定数据库或环境时，调用相应命名的工具。
+
+## 搜索特定对象
+
+`search_objects` 工具支持跨所有对象类型的目标搜索：
+
+```
+# 查找名称中包含 "order" 的所有表
+search_objects(object_type="table", pattern="%order%", detail_level="names")
+
+# 查找跨所有表名为 "email" 的列
+search_objects(object_type="column", pattern="email", detail_level="names")
+
+# 查找匹配模式的存储过程
+search_objects(object_type="procedure", schema="public", pattern="%report%", detail_level="summary")
+
+# 查找函数
+search_objects(object_type="function", schema="public", detail_level="names")
+```
+
+## 常见模式
+
+### "我们有什么数据？"
+1. 列出模式 → 使用 `summary` 详细级别列出表 → 选择相关表 → 使用 `full` 详细级别检查
+
+### "从数据库中获取 X"
+1. 搜索与 X 相关的表 → 检查列 → 编写目标 SELECT
+
+### "这些表如何关联？"
+1. 使用 `full` 详细级别检查两个表（列 + 索引揭示外键和连接列）
+
+### "运行此特定 SQL"
+如果用户提供了确切的 SQL，您可以直接执行它。但如果因列或表错误而失败，请回退到探索工作流程而不是猜测修复。
+
+## 错误恢复
+
+当查询失败时：
+- **未知表/列**：使用 `search_objects` 找到正确的名称，而不是猜测变体
+- **模式错误**：首先列出可用模式 — 表可能在不同于预期的模式中
+- **权限错误**：数据库可能处于只读模式；检查是否只允许 SELECT 语句
+- **多条语句**：`execute_sql` 支持用 `;` 分隔的多条 SQL 语句
+
+## 不要做什么
+
+- **不要猜测表或列名。** 始终首先使用 `search_objects` 验证。错误的猜测会浪费一次往返并使对话混乱。
+- **不要预先转储整个模式。** 使用渐进式披露 — 从 `names` 开始，仅对实际要查询的表深入 `full`。
+- **不要在多数据库设置中使用错误的工具。** 如果用户提到特定数据库，请调用源特定的工具变体（例如，`execute_sql_prod_pg`）而不是通用的 `execute_sql`。
+- **不要盲目重试失败的查询。** 如果 SQL 失败，请在重试之前调查模式以了解原因。
