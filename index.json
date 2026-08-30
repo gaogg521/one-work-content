@@ -1,0 +1,287 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "kind": "skill",
+      "name": "会议纪要整理",
+      "title": "会议纪要整理",
+      "description": "把零散的会议记录/转录整理成结构化纪要：决议、待办、责任人、时间点。",
+      "path": "skills/meeting-notes/SKILL.md",
+      "sha256": "10fde384bcb353db3e67029ff02e8122507c099e56b3486916195e40ed6b6c64"
+    },
+    {
+      "kind": "skill",
+      "name": "周报生成",
+      "title": "周报生成",
+      "description": "根据本周完成事项、进行中事项、下周计划，生成简洁的工作周报。",
+      "path": "skills/weekly-report/SKILL.md",
+      "sha256": "3410da2f29e56fc58b74eaa7ca3738ad9fde38e7ad577549bf5f5ad14bdbd786"
+    },
+    {
+      "kind": "skill",
+      "name": "邮件起草与润色",
+      "title": "邮件起草与润色",
+      "description": "起草或润色商务邮件，把握语气、结构和礼貌分寸。",
+      "path": "skills/email-polish/SKILL.md",
+      "sha256": "afa46c48ca2f23a499bf5ca434970d6e6bb5aa6252b8b0ad1c7e5ace8d3fa77e"
+    },
+    {
+      "kind": "skill",
+      "name": "日程冲突协调",
+      "title": "日程冲突协调",
+      "description": "面对多个会议/任务时间冲突，给出优先级判断和协调话术。",
+      "path": "skills/schedule-conflict/SKILL.md",
+      "sha256": "4ccaeb59f46ba5f093c355c58e5fcfb00ba03483d3bf6ab075b6a608e05fc161"
+    },
+    {
+      "kind": "skill",
+      "name": "PPT 大纲生成",
+      "title": "PPT 大纲生成",
+      "description": "把一个主题或一份材料转成演示文稿的分页大纲。",
+      "path": "skills/slide-outline/SKILL.md",
+      "sha256": "06c44e3fa132286f063c3ce0d025cfbd2240fff604495aef1532832664671717"
+    },
+    {
+      "kind": "skill",
+      "name": "日志错误分析",
+      "title": "日志错误分析",
+      "description": "从一段日志中定位错误根因、影响范围和排查方向。",
+      "path": "skills/log-error-analysis/SKILL.md",
+      "sha256": "7c99ab6255a0a03fd156c1f773ae21ff658c9abed66b286b02b0c616406f3083"
+    },
+    {
+      "kind": "skill",
+      "name": "事故复盘报告",
+      "title": "事故复盘报告",
+      "description": "把一次线上事故整理成无指责的复盘报告。",
+      "path": "skills/incident-postmortem/SKILL.md",
+      "sha256": "acbf451d09e00349ba1be631cb3760697145bcfa75b35f6ca71bbdfbb0804f6b"
+    },
+    {
+      "kind": "skill",
+      "name": "Shell 脚本审查",
+      "title": "Shell 脚本审查",
+      "description": "审查 Shell 脚本的健壮性、安全性和可维护性。",
+      "path": "skills/shell-script-review/SKILL.md",
+      "sha256": "007859656c9b286216559aced3a8c35e40d0487696301dfe43a0611da4a3f527"
+    },
+    {
+      "kind": "skill",
+      "name": "容量规划评估",
+      "title": "容量规划评估",
+      "description": "根据当前用量和增长趋势，评估资源是否够用、何时扩容。",
+      "path": "skills/capacity-planning/SKILL.md",
+      "sha256": "b27b300438972a6edf35dd712084941927332b98a030078a07f38b9b6da3dda2"
+    },
+    {
+      "kind": "skill",
+      "name": "告警降噪归类",
+      "title": "告警降噪归类",
+      "description": "把一批告警按根因聚合、按严重度排序，识别噪声告警。",
+      "path": "skills/alert-triage/SKILL.md",
+      "sha256": "6cd27e06553737407c791a9fe6379b3481e89adedd9db07af9004caed5d01eeb"
+    },
+    {
+      "kind": "skill",
+      "name": "代码审查清单",
+      "title": "代码审查清单",
+      "description": "对一段代码变更做结构化审查：正确性、边界、可维护性。",
+      "path": "skills/code-review-checklist/SKILL.md",
+      "sha256": "a38e7ddac1f8b2faf5f83fb732bd26c044c7256aacd3ce9575bf53363b97f2bf"
+    },
+    {
+      "kind": "skill",
+      "name": "PR 描述生成",
+      "title": "PR 描述生成",
+      "description": "根据代码变更生成清晰的 Pull Request 描述。",
+      "path": "skills/pr-description/SKILL.md",
+      "sha256": "001035f81c7a2e21c5bfd80d14eb227aa530da52c0f52678de984fa19e61dd14"
+    },
+    {
+      "kind": "skill",
+      "name": "需求拆分为任务",
+      "title": "需求拆分为任务",
+      "description": "把一个功能需求拆成可独立开发和验证的小任务。",
+      "path": "skills/story-breakdown/SKILL.md",
+      "sha256": "08d4d5b2068192a44171bf8f16db1e5f186612665839182e1501638ff19d9867"
+    },
+    {
+      "kind": "skill",
+      "name": "技术方案评审",
+      "title": "技术方案评审",
+      "description": "对一份技术方案做批判性评审，找出风险和缺失。",
+      "path": "skills/design-review/SKILL.md",
+      "sha256": "de077c0eb3833e5ea97d8a8dfb81a9b7ce33b0ea2f3e189460ade9e21611c9aa"
+    },
+    {
+      "kind": "skill",
+      "name": "测试用例设计",
+      "title": "测试用例设计",
+      "description": "为一个功能或接口设计测试用例，覆盖正常、边界、异常。",
+      "path": "skills/test-case-design/SKILL.md",
+      "sha256": "e6527db0f2432bc44157d51873cb8faf74e056157aece46658d279c155bd5e68"
+    },
+    {
+      "kind": "skill",
+      "name": "选题策划",
+      "title": "选题策划",
+      "description": "围绕一个方向产出一批有传播潜力的内容选题。",
+      "path": "skills/content-topic-ideation/SKILL.md",
+      "sha256": "d8d8b008135543a73c271c2e5530286a963711a0391133b0d8810a07b492a30f"
+    },
+    {
+      "kind": "skill",
+      "name": "短视频脚本",
+      "title": "短视频脚本",
+      "description": "把一个观点写成 60~90 秒的短视频口播脚本。",
+      "path": "skills/short-video-script/SKILL.md",
+      "sha256": "0a50944a77eda30394d9cd16b7f056dbf18772f2dde762a3c8d07cc775d4d74e"
+    },
+    {
+      "kind": "skill",
+      "name": "小红书文案",
+      "title": "小红书文案",
+      "description": "按小红书的风格写一篇种草或分享笔记。",
+      "path": "skills/xiaohongshu-copy/SKILL.md",
+      "sha256": "7af2362c2c0df867b5be25dca2e4f5512a1723196e3f4ca7b7e2b6c70f26a839"
+    },
+    {
+      "kind": "skill",
+      "name": "内容合规自查",
+      "title": "内容合规自查",
+      "description": "对一段营销/宣传文案做合规自查，标出高风险表述。",
+      "path": "skills/content-compliance/SKILL.md",
+      "sha256": "a603696e845a65a0c168e2d83e6e541fdbd633ffb01267ab97aff506568d078f"
+    },
+    {
+      "kind": "skill",
+      "name": "标题优化",
+      "title": "标题优化",
+      "description": "给一个标题产出多个优化版本，并说明各自的策略。",
+      "path": "skills/headline-optimization/SKILL.md",
+      "sha256": "de041b914df6d26be365e2081ce5c67cb6d87589c1cff1c87bbffc9836add2f2"
+    },
+    {
+      "kind": "skill",
+      "name": "SQL 查询助手",
+      "title": "SQL 查询助手",
+      "description": "根据自然语言需求写 SQL，或解释/优化一段已有 SQL。",
+      "path": "skills/sql-helper/SKILL.md",
+      "sha256": "162b9f355f3eb3fd48d6aa833012823fc7a2a2071253572173cf9d41ee664f07"
+    },
+    {
+      "kind": "skill",
+      "name": "指标异常诊断",
+      "title": "指标异常诊断",
+      "description": "面对一个指标的异常波动，给出结构化的排查思路。",
+      "path": "skills/metric-anomaly/SKILL.md",
+      "sha256": "831cc79f59ea4ddbb6cb62dc45702024121de50ddbdc8a927580c8088acb8861"
+    },
+    {
+      "kind": "skill",
+      "name": "数据报告解读",
+      "title": "数据报告解读",
+      "description": "把一份数据报告/看板读成给决策者的三句话结论。",
+      "path": "skills/data-report-reading/SKILL.md",
+      "sha256": "c44fca57af90403441b21941a39b5937eae78a5d4833c09fa5764abdd701f0a6"
+    },
+    {
+      "kind": "skill",
+      "name": "A/B 实验分析",
+      "title": "A/B 实验分析",
+      "description": "解读一个 A/B 实验的结果，判断是否可以推全。",
+      "path": "skills/ab-test-analysis/SKILL.md",
+      "sha256": "16b04aeeccc5da0d4f4a6b1ac27a1b56ed24d454770e49111266848afa39e3ff"
+    },
+    {
+      "kind": "skill",
+      "name": "Excel 公式生成",
+      "title": "Excel 公式生成",
+      "description": "根据需求生成 Excel/WPS 公式，并解释原理。",
+      "path": "skills/excel-formula/SKILL.md",
+      "sha256": "e19a0582c8ccb6f2553baa90bdd3c2c7503a1fe3b58919bcaf6fbec6b1f8188a"
+    },
+    {
+      "kind": "skill",
+      "name": "工单分类与升级",
+      "title": "工单分类与升级",
+      "description": "对一个客户工单做分类、定级、路由和升级判断。",
+      "path": "skills/ticket-triage/SKILL.md",
+      "sha256": "3d0ba32d3de3d1dc57edaef2e61a617a8db8ded19f8d56b858722c8d4cbf4110"
+    },
+    {
+      "kind": "skill",
+      "name": "客户回复起草",
+      "title": "客户回复起草",
+      "description": "为客服起草一封回复客户的邮件/消息，平衡专业与共情。",
+      "path": "skills/customer-reply/SKILL.md",
+      "sha256": "b8e2e373e34b459bd92d8cbb8652010d3801066cce894b08b0723fc312df89e2"
+    },
+    {
+      "kind": "skill",
+      "name": "FAQ 条目生成",
+      "title": "FAQ 条目生成",
+      "description": "把一批重复工单归纳成 FAQ 条目。",
+      "path": "skills/faq-generation/SKILL.md",
+      "sha256": "04b050a8235b641f4faf35601bb2a7b7575bd2eba2c265305c7f37d9200baa7a"
+    },
+    {
+      "kind": "skill",
+      "name": "投诉安抚话术",
+      "title": "投诉安抚话术",
+      "description": "面对情绪激动的客户投诉，给出安抚和引导话术。",
+      "path": "skills/complaint-deescalation/SKILL.md",
+      "sha256": "fcf42ec127784da59fe1ce59ecbe73a9564138d31c46433caf0902f67fa0a649"
+    },
+    {
+      "kind": "mcp",
+      "name": "github",
+      "title": "github",
+      "description": "GitHub 仓库、Issue、PR 操作（部署方替换为自己的 MCP 网关地址）",
+      "mcp": {
+        "type": "sse",
+        "endpoint": "https://mcp.example.com/github/sse"
+      }
+    },
+    {
+      "kind": "mcp",
+      "name": "jira",
+      "title": "jira",
+      "description": "Jira 事项检索与更新",
+      "mcp": {
+        "type": "sse",
+        "endpoint": "https://mcp.example.com/jira/sse"
+      }
+    },
+    {
+      "kind": "mcp",
+      "name": "confluence",
+      "title": "confluence",
+      "description": "Confluence 文档检索",
+      "mcp": {
+        "type": "sse",
+        "endpoint": "https://mcp.example.com/confluence/sse"
+      }
+    },
+    {
+      "kind": "mcp",
+      "name": "postgres-readonly",
+      "title": "postgres-readonly",
+      "description": "只读 Postgres 查询",
+      "mcp": {
+        "type": "sse",
+        "endpoint": "https://mcp.example.com/pg-ro/sse"
+      }
+    },
+    {
+      "kind": "mcp",
+      "name": "web-search",
+      "title": "web-search",
+      "description": "联网搜索",
+      "mcp": {
+        "type": "sse",
+        "endpoint": "https://mcp.example.com/websearch/sse"
+      }
+    }
+  ]
+}
